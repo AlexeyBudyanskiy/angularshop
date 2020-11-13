@@ -1,0 +1,10 @@
+<h1>Cart</h1>
+<h2>Items in cart: {{getItemsCount()}}</h2>
+<h2>Sum: {{getItemsSum()}}</h2>
+
+<div *ngFor="let product of products">
+    <app-cart-item [product]='product' (addToCart)="onAddItem($event)" (removeFromCart)="onRemoveItem($event)"></app-cart-item>
+</div>
+
+
+<p appHiglight>Text to highlight</p>
