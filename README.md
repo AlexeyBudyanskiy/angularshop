@@ -1,6 +1,9 @@
 # Shop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+This is training project which emulates simple shop. 
+Completed tasks:
+1 - Created project, tested components work, tested services work.
+2 - Splitted app on several modules, created functionality to add items to the cart, used lifecycle hooks, used template variables, used directives.
 
 ## Development server
 
