@@ -9,21 +9,26 @@ export class CartService {
 
   constructor() { }
 
-  getItems(): CartItem[]  {
-    let cartItemsInCart = JSON.parse(localStorage.getItem('cartList1'));
+  public getItems(): CartItem[]  {
+    const itemsJson = localStorage.getItem('cartList');
 
-    if (cartItemsInCart == null){
-      cartItemsInCart = [];
+    if (itemsJson == null){
+      return [];
     }
 
-    return cartItemsInCart;
+    var result = JSON.parse(itemsJson);
+    if (result == null){
+      return [];
+    }
+
+    return result;
   }
 
-  addItem(product: Product): void {
+  public addItem(product: Product): void {
     const cartItemsInCart = this.getItems();
     let existingCartItem = cartItemsInCart.find(cartItem => cartItem.product.id === product.id);
 
-    if (existingCartItem === null){
+    if (existingCartItem === null || existingCartItem === undefined){
       existingCartItem = {
         product,
         quantity: 1
@@ -31,38 +36,60 @@ export class CartService {
       cartItemsInCart.push(existingCartItem);
     }
     else{
-      existingCartItem.quantity += 1;
+      this.increaseQuantity(existingCartItem);
     }
 
-    localStorage.setItem('cartList1', JSON.stringify(cartItemsInCart));
+    localStorage.setItem('cartList', JSON.stringify(cartItemsInCart));
   }
 
-  removeItem(product: Product): void {
+  public removeItem(product: Product): void {
     const cartItemsInCart = this.getItems();
     const existingCartItem = cartItemsInCart.find(cartItem => cartItem.product.id === product.id);
     if (existingCartItem.quantity > 1){
-      existingCartItem.quantity -= 1;
+      this.decreaseQuantity(existingCartItem);
     }
     else{
-      const index = cartItemsInCart.indexOf(existingCartItem);
-
-      if (index > -1) {
-        cartItemsInCart.splice(index, 1);
-     }
+      this.removeCartItem(cartItemsInCart, existingCartItem);
     }
 
-    localStorage.setItem('cartList1', JSON.stringify(cartItemsInCart));
+    localStorage.setItem('cartList', JSON.stringify(cartItemsInCart));
   }
 
-  getItemsCount(): number{
+  public removeAllItems(): void{
+    localStorage.setItem('cartList', null);
+  }
+
+  public getItemsCount(): number{
     return this.getItems().map(cartItem => cartItem.quantity).reduce((a: number, b: number): number => {
       return a + b;
     }, 0);
   }
 
-  getItemsSum(): number {
+  public getItemsSum(): number {
     return this.getItems().map(cartItem => cartItem.quantity * cartItem.product.price).reduce((a: number, b: number): number => {
       return a + b;
     });
   }
+
+  public isEmpty(){
+    return this.getItems.length === 0;
+  }
+
+  private removeCartItem(cartItemsInCart: CartItem[], existingCartItem: CartItem): void {
+    const index = cartItemsInCart.indexOf(existingCartItem);
+
+    if (index > -1) {
+      cartItemsInCart.splice(index, 1);
+    }
+  }
+
+  private increaseQuantity(cartItem: CartItem): void{
+    cartItem.quantity += 1;
+  }
+
+  private decreaseQuantity(cartItem: CartItem): void{
+    cartItem.quantity -= 1;
+  }
+
+
 }
