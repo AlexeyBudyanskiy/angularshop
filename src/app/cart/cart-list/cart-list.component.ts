@@ -1,4 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { CartItem } from 'src/app/shared/models/cart-item';
 import { Product } from '../../shared/models/product';
 import { CartService } from '../../shared/services/cart.service';
 
@@ -9,19 +10,19 @@ import { CartService } from '../../shared/services/cart.service';
 })
 export class CartListComponent implements OnInit, DoCheck {
 
-  public products: Product[];
+  public cartItems: CartItem[];
 
   constructor(private cartService: CartService) { }
 
   ngDoCheck(): void {
-    this.products = this.getItems();
+    this.cartItems = this.getItems();
   }
 
   ngOnInit(): void {
-    this.products = this.getItems();
+    this.cartItems = this.getItems();
   }
 
-  getItems(): Product[] {
+  getItems(): CartItem[] {
     return this.cartService.getItems();
   }
 

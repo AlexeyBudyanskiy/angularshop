@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { Category } from '../enums/category';
+import { CartItem } from '../models/cart-item';
 
 @Injectable({
   providedIn: 'root'
@@ -9,42 +9,59 @@ export class CartService {
 
   constructor() { }
 
-  getItems(): Product[]  {
-    let productsInCart = JSON.parse(localStorage.getItem('cartList'));
+  getItems(): CartItem[]  {
+    let cartItemsInCart = JSON.parse(localStorage.getItem('cartList1'));
 
-    if (productsInCart == null){
-      productsInCart = [];
+    if (cartItemsInCart == null){
+      cartItemsInCart = [];
     }
 
-    return productsInCart;
+    return cartItemsInCart;
   }
 
   addItem(product: Product): void {
-    const productsInCart = this.getItems();
+    const cartItemsInCart = this.getItems();
+    let existingCartItem = cartItemsInCart.find(cartItem => cartItem.product.id === product.id);
 
-    productsInCart.push(product);
+    if (existingCartItem === null){
+      existingCartItem = {
+        product,
+        quantity: 1
+      };
+      cartItemsInCart.push(existingCartItem);
+    }
+    else{
+      existingCartItem.quantity += 1;
+    }
 
-    localStorage.setItem('cartList', JSON.stringify(productsInCart));
+    localStorage.setItem('cartList1', JSON.stringify(cartItemsInCart));
   }
 
   removeItem(product: Product): void {
-    const productsInCart = this.getItems();
-    const currentProduct = productsInCart.find(x => x.name === product.name);
-    const index = productsInCart.indexOf(currentProduct);
+    const cartItemsInCart = this.getItems();
+    const existingCartItem = cartItemsInCart.find(cartItem => cartItem.product.id === product.id);
+    if (existingCartItem.quantity > 1){
+      existingCartItem.quantity -= 1;
+    }
+    else{
+      const index = cartItemsInCart.indexOf(existingCartItem);
 
-    if (index > -1) {
-      productsInCart.splice(index, 1);
-   }
+      if (index > -1) {
+        cartItemsInCart.splice(index, 1);
+     }
+    }
 
-    localStorage.setItem('cartList', JSON.stringify(productsInCart));
+    localStorage.setItem('cartList1', JSON.stringify(cartItemsInCart));
   }
 
   getItemsCount(): number{
-    return this.getItems().length;
+    return this.getItems().map(cartItem => cartItem.quantity).reduce((a: number, b: number): number => {
+      return a + b;
+    }, 0);
   }
 
   getItemsSum(): number {
-    return this.getItems().map(product => product.price).reduce((a: number, b: number): number => {
+    return this.getItems().map(cartItem => cartItem.quantity * cartItem.product.price).reduce((a: number, b: number): number => {
       return a + b;
     });
   }
