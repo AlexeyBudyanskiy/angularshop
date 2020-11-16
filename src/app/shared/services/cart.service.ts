@@ -16,7 +16,7 @@ export class CartService {
       return [];
     }
 
-    var result = JSON.parse(itemsJson);
+    const result = JSON.parse(itemsJson);
     if (result == null){
       return [];
     }
@@ -71,7 +71,7 @@ export class CartService {
     });
   }
 
-  public isEmpty(){
+  public isEmpty(): boolean {
     return this.getItems.length === 0;
   }
 
