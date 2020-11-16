@@ -15,7 +15,7 @@ import { CartModule } from '../cart/cart.module';
   ],
   exports: [
     ProductListComponent,
-    ProductComponent
+    // ProductComponent // надо ли делать этот компонент публичным?
   ]
 })
 export class ProductsModule { }

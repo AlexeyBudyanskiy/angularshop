@@ -4,6 +4,7 @@ import { ProductListComponent } from '../app/products/product-list/product-list.
 import { CartListComponent } from '../app/cart/cart-list/cart-list.component';
 
 const routes: Routes = [
+  // может лучше редирект сделать, чтобы ны было что на два разных паса, один компонент
   { path: '', component: ProductListComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'cart', component: CartListComponent }

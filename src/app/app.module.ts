@@ -21,7 +21,7 @@ import { CartService } from './shared/services/cart.service';
     ProductsModule,
     SharedModule
   ],
-  providers: [CartService],
+  // providers: [CartService], // уже зарегисрирован через свой декоратор
   bootstrap: [AppComponent]
 })
 export class AppModule { }
