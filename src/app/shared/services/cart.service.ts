@@ -16,7 +16,7 @@ export class CartService {
       return [];
     }
 
-    var result = JSON.parse(itemsJson);
+    const result = JSON.parse(itemsJson);
     if (result == null){
       return [];
     }
@@ -26,13 +26,11 @@ export class CartService {
 
   public addItem(product: Product): void {
     const cartItemsInCart = this.getItems();
-    let existingCartItem = cartItemsInCart.find(cartItem => cartItem.product.id === product.id);
+    let existingCartItem = cartItemsInCart.find(cartItem => cartItem.id === product.id);
 
     if (existingCartItem === null || existingCartItem === undefined){
-      existingCartItem = {
-        product,
-        quantity: 1
-      };
+      existingCartItem = product as CartItem;
+      existingCartItem.quantity = 1;
       cartItemsInCart.push(existingCartItem);
     }
     else{
@@ -44,7 +42,7 @@ export class CartService {
 
   public removeItem(product: Product): void {
     const cartItemsInCart = this.getItems();
-    const existingCartItem = cartItemsInCart.find(cartItem => cartItem.product.id === product.id);
+    const existingCartItem = cartItemsInCart.find(cartItem => cartItem.id === product.id);
     if (existingCartItem.quantity > 1){
       this.decreaseQuantity(existingCartItem);
     }
@@ -66,12 +64,12 @@ export class CartService {
   }
 
   public getItemsSum(): number {
-    return this.getItems().map(cartItem => cartItem.quantity * cartItem.product.price).reduce((a: number, b: number): number => {
+    return this.getItems().map(cartItem => cartItem.quantity * cartItem.price).reduce((a: number, b: number): number => {
       return a + b;
     });
   }
 
-  public isEmpty(){
+  public isEmpty(): boolean {
     return this.getItems.length === 0;
   }
 

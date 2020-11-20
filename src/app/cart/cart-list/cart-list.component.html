@@ -5,6 +5,3 @@
 <div *ngFor="let cartItem of cartItems">
     <app-cart-item [cartItem]='cartItem' (addToCart)="onAddItem($event)" (removeFromCart)="onRemoveItem($event)"></app-cart-item>
 </div>
-
-
-<p appHiglight>Text to highlight</p>

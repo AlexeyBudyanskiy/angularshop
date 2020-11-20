@@ -14,8 +14,7 @@ import { CartModule } from '../cart/cart.module';
     CommonModule
   ],
   exports: [
-    ProductListComponent,
-    ProductComponent
+    ProductListComponent
   ]
 })
 export class ProductsModule { }

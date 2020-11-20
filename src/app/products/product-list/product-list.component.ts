@@ -18,8 +18,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   @ViewChild('appTitle') applicationTitle: ElementRef<HTMLHeadingElement>;
   public products: Product[];
 
-  ngAfte;
-
   ngAfterViewInit(): void {
     this.applicationTitle.nativeElement.innerText = 'Products page';
   }

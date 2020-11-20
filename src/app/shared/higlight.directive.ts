@@ -5,7 +5,7 @@ import { AfterViewInit, Directive, ElementRef, HostBinding, HostListener, Input,
 })
 export class HiglightDirective {
 
-  constructor(public el: ElementRef) {
+  constructor(public el: ElementRef, private render: Renderer2) {
     el.nativeElement.style.backgroundColor = 'yellow';
  }
 
@@ -24,7 +24,15 @@ export class HiglightDirective {
     this.highlight(null);
   }
 
-  private highlight(color: string): void {
-    this.el.nativeElement.style.backgroundColor = color;
+  @HostListener('click', ['$event'])
+  click(event: Event): void  {
+    console.log('mouseclick event on host element');
+    this.render.setStyle(this.el.nativeElement, 'text-decoration', 'line-through');
   }
+
+  private highlight(color: string): void {
+    this.render.setStyle(this.el.nativeElement, 'backgroundColor', color);
+  }
+
+
 }
