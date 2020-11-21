@@ -1,5 +1,4 @@
 <h1 #appTitle></h1>
-<h2>Count: {{getItemsCount()}}</h2>
-<div *ngFor="let product of products">
+<div *ngFor="let product of products | async">
   <app-product [product]='product' (addToCart)="onAddToCart($event)"></app-product>
 </div>

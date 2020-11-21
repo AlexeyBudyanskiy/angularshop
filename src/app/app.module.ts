@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +21,7 @@ import { CartService } from './shared/services/cart.service';
     ProductsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [{provide: DEFAULT_CURRENCY_CODE, useValue: 'USD'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

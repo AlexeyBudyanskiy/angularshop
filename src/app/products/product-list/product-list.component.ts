@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { Product } from '../../shared/models/product';
 import { ProductService } from '../product.service';
 import { CartService } from '../../shared/services/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -16,7 +17,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     private cartService: CartService) { }
 
   @ViewChild('appTitle') applicationTitle: ElementRef<HTMLHeadingElement>;
-  public products: Product[];
+  public products: Observable<Product[]>;
 
   ngAfterViewInit(): void {
     this.applicationTitle.nativeElement.innerText = 'Products page';
@@ -28,10 +29,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   onAddToCart(product: Product): void {
     this.cartService.addItem(product);
-  }
-
-  getItemsCount(): number{
-    return this.cartService.getItemsCount();
   }
 }
 

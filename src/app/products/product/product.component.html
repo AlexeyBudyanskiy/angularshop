@@ -1,16 +1,19 @@
 <div class="card" style="width: 25rem; margin: 25px;">
   <div class="card-body">
-      <h5 class="card-title">Name: {{product.name}}<span class="badge badge-secondary" *ngIf='product.isAvailable'>Available</span></h5>
-      <h6 class="card-subtitle mb-2 text-muted">Category: {{product.category}}</h6>
+      <h5 class="card-title">Name: {{product.name | titlecase}}<span class="badge badge-secondary" *ngIf='product.isAvailable'>Available</span></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Category: {{product.category | uppercase}}</h6>
       <p class="card-text">Description: {{product.description}}</p>
-      <div *ngFor="let tag of product.tags">
-          <p class="card-text">
-              {{tag}}
-          </p>
+      <div>
+        <p class="card-text">Tags:
+        <i *ngFor="let tag of product.tags">
+              {{tag | lowercase}},
+        </i>
+      </p>
       </div>
+      <div class="card-text">Updated date: {{product.updatedDate | date:'short'}}</div>
       <div *ngIf="product.isAvailable">
           <h3>
-              <h2>Price: {{product.price}}</h2>
+            <h2>Price: {{product.price | currency:'USD':'symbol':'2.2-2'}}({{product.price * 0.84 | currency:'EUR':'symbol':'2.2-2'}})</h2>
           </h3>
       </div>
       <button type="button" class="btn btn-primary" (click)='onAddToCart(product)' [disabled]="!product.isAvailable">Add to cart</button>

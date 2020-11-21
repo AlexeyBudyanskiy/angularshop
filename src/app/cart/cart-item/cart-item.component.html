@@ -1,17 +1,19 @@
 <div class="card" style="width: 25rem; margin: 25px;">
   <div class="card-body">
-    <h5 class="card-title">Name: {{cartItem.name}}<span class="badge badge-secondary"
-        *ngIf='cartItem.isAvailable'>Available</span></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Category: {{cartItem.category}}</h6>
+    <h5 class="card-title">Name: {{cartItem.name | titlecase}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Category: {{cartItem.category | uppercase}}</h6>
     <p class="card-text">Description: {{cartItem.description}}</p>
-    <div *ngFor="let tag of cartItem.tags">
-      <p class="card-text">
-        {{tag}}
-      </p>
+    <div>
+      <p class="card-text">Tags:
+      <i *ngFor="let tag of cartItem.tags">
+            {{tag | lowercase}},
+      </i>
+    </p>
     </div>
+    <div class="card-text">Updated date: {{cartItem.updatedDate | date:'short'}}</div>
     <div *ngIf="cartItem.isAvailable">
       <h3>
-        <h2>Price: {{cartItem.price}}</h2>
+        <h2>Price: {{cartItem.price | currency:'USD':'symbol':'2.2-2'}}({{cartItem.price * 0.84 | currency:'EUR':'symbol':'2.2-2'}})</h2>
       </h3>
     </div>
     <p>Quantity {{cartItem.quantity}}</p>
