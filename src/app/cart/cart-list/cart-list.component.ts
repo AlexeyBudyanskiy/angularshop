@@ -42,4 +42,8 @@ export class CartListComponent implements OnInit, DoCheck {
     return this.cartService.getItemsSum();
   }
 
+  triggerPipe(): void{
+    // Empty method to trigger pipe
+  }
+
 }

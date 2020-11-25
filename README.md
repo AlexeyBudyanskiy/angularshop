@@ -4,6 +4,8 @@ This is training project which emulates simple shop.
 Completed tasks:
 1 - Created project, tested components work, tested services work.
 2 - Splitted app on several modules, created functionality to add items to the cart, used lifecycle hooks, used template variables, used directives.
+3 - Added more functionality to CartService. Added ConfigOptionsService, ConstantsService, GeneratorService. Added FirstComponent where all the services injected with different DI options.
+4 - Added pipes for date, currency, uppercase/lowercase/titlecase in product and cart-items component. Product servie now returns observable and asycn pipe used. Added order-by custom pipe. The pipe is used on cart-list component.
 
 ## Development server
 
