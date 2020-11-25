@@ -24,11 +24,11 @@ export class CartItemComponent implements OnInit {
   }
 
   onAddToCart(): void{
-    this.addToCart.emit(this.cartItem.product);
+    this.addToCart.emit(this.cartItem);
   }
 
   onRemoveFromCart(): void{
-    this.removeFromCart.emit(this.cartItem.product);
+    this.removeFromCart.emit(this.cartItem);
   }
 
 }
