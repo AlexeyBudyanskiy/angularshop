@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 50rem; margin: 25px;">
+    <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Name: {{product.name | titlecase}}<span class="badge badge-secondary"
+          *ngIf='product.isAvailable'>Available</span></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Category: {{product.category | uppercase}}</h6>
+      <p class="card-text">Description: {{product.description}}</p>
+      <div>
+        <p class="card-text">Tags:
+          <i *ngFor="let tag of product.tags">
+            {{tag | lowercase}},
+          </i>
+        </p>
+      </div>
+      <div class="card-text">Updated date: {{product.updatedDate | date:'short'}}</div>
+      <div *ngIf="product.isAvailable">
+        <h3>
+          <h2>Price:
+            {{product.price | currency:'USD':'symbol':'2.2-2'}}({{product.price * 0.84 | currency:'EUR':'symbol':'2.2-2'}})
+          </h2>
+        </h3>
+      </div>
+      <button type="button" class="btn btn-primary" (click)='onAddToCart()' [disabled]="!product.isAvailable">Add to cart</button>
+    </div>
+  </div>
+</div>

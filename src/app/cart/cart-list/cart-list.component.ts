@@ -1,7 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { CartItem } from 'src/app/shared/models/cart-item';
-import { Product } from '../../shared/models/product';
-import { CartService } from '../../shared/services/cart.service';
+import { CartItem, Product } from 'src/app/shared/models';
+import { CartService } from '../../shared/services';
 
 @Component({
   selector: 'app-cart-list',

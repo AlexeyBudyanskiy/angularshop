@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+     <app-navbar></app-navbar>
+     <router-outlet
+          #routerOutlet="outlet"
+          (activate)='onActivate($event, routerOutlet)'
+          (deactivate)='onDeactivate($event, routerOutlet)'>
+     </router-outlet>
+
+
+

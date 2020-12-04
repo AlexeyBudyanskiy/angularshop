@@ -1,4 +1,4 @@
-<div class="card" style="width: 25rem; margin: 25px;">
+<div class="card" style="margin: 25px;" [routerLink]="['/products', product.id]">
   <div class="card-body">
       <h5 class="card-title">Name: {{product.name | titlecase}}<span class="badge badge-secondary" *ngIf='product.isAvailable'>Available</span></h5>
       <h6 class="card-subtitle mb-2 text-muted">Category: {{product.category | uppercase}}</h6>
@@ -16,6 +16,8 @@
             <h2>Price: {{product.price | currency:'USD':'symbol':'2.2-2'}}({{product.price * 0.84 | currency:'EUR':'symbol':'2.2-2'}})</h2>
           </h3>
       </div>
-      <button type="button" class="btn btn-primary" (click)='onAddToCart(product)' [disabled]="!product.isAvailable">Add to cart</button>
+      <button type="button" class="btn btn-primary" (click)='onAddToCart($event)' [disabled]="!product.isAvailable">Add to cart</button>
+      <button *ngIf="isAdmin" type="button" class="btn btn-primary" [routerLink]="['/admin/products/edit', product.id]">Edit</button>
+      <button *ngIf="isAdmin" type="button" class="btn btn-primary" (click)='onDelete($event)'>Delete</button>
   </div>
 </div>

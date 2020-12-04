@@ -1,8 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Product } from '../../shared/models/product';
-import { ProductService } from '../product.service';
-import { CartService } from '../../shared/services/cart.service';
 import { Observable } from 'rxjs';
+
+import { Product } from '../../shared/models';
+import { CartService } from '../../shared/services';
+import { ProductService } from '../product.service';
+
 
 @Component({
   selector: 'app-product-list',

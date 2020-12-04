@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1 class="text-center">Order info</h1>
+      <div class="card" [routerLink]="['/orders', order.id]">
+        <div class="card-body">
+          <h1 class="card-title">Customer: {{order.customerName}}</h1>
+          <h2 class="card-subtitle mb-2">Address: {{order.address}}</h2>
+          <h3 class="card-subtitle mb-2">Sum:
+            {{getOrderSum() | currency:'USD':'symbol':'2.2-2'}}({{getOrderSum()* 0.84 | currency:'EUR':'symbol':'2.2-2'}})
+          </h3>
+          <h3 class="card-subtitle mb-2">Quantity: {{getOrderQuantity()}}</h3>
+          <div class="card-text">Id: {{order.id}}</div>
+          <div class="card-text">Date: {{order.date | date:'short'}}</div>
+        </div>
+      </div>
+      <h1 class="text-center">Order items</h1>
+      <div
+        *ngFor="let cartItem of order.cartItems">
+        <app-cart-item [cartItem]='cartItem' [displayButtons]="false">
+        </app-cart-item>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,4 +9,5 @@ export interface Product {
     isAvailable: boolean;
     tags: string[];
     updatedDate: Date;
+    imageUrl: string;
   }

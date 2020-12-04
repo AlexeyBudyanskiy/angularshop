@@ -6,6 +6,7 @@ Completed tasks:
 2 - Splitted app on several modules, created functionality to add items to the cart, used lifecycle hooks, used template variables, used directives.
 3 - Added more functionality to CartService. Added ConfigOptionsService, ConstantsService, GeneratorService. Added FirstComponent where all the services injected with different DI options.
 4 - Added pipes for date, currency, uppercase/lowercase/titlecase in product and cart-items component. Product servie now returns observable and asycn pipe used. Added order-by custom pipe. The pipe is used on cart-list component.
+5 - Added admin functionality which is lazy loaded. Implemented very simple login (Just LogIn/LogOut button). Added Forbidden, NotFound components. Added ability to create orders. Added navbar. Applied additional css styles. Refactored all the code.
 
 ## Development server
 

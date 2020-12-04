@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1 class="text-center">{{product.id ? 'Edit product' : 'Add product'}}</h1>
+      <form *ngIf="product" (ngSubmit)="onSaveProduct()">
+
+        <div class="form-group">
+          <label for="nameInput">Name</label>
+          <input type="text" class="form-control" id="nameInput" [(ngModel)]="product.name" name="name"
+            placeholder="Enter name">
+        </div>
+
+        <div class="form-group">
+          <label for="descriptionTextArea">Description</label>
+          <textarea class="form-control" id="descriptionTextArea" rows="3" [(ngModel)]="product.description"
+            name="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="priceInput">Price</label>
+          <input type="number" class="form-control" id="priceInput" [(ngModel)]="product.price"
+            placeholder="Enter price" name="price">
+        </div>
+
+        <div class="form-group">
+          <label for="categorySelect">Category</label>
+          <select [(ngModel)]="product.category" class="form-control" id="categorySelect" name="category">
+            <option (selected)="product.category == 'First'" value='First'>First</option>
+            <option (selected)="product.category == 'Second'" value='Second'>Second</option>
+            <option (selected)="product.category == 'Third'" value='Third'>Third</option>
+            <option (selected)="product.category == 'Fourth'" value='Fourth'>Fourth</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="priceInput">Image url</label>
+          <input type="text" class="form-control" id="imageUrl" [(ngModel)]="product.imageUrl" placeholder="Enter price"
+            name="imageUrl">
+        </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="isProductAvailableCheckBox"
+              [(ngModel)]="product.isAvailable" name="isAvailable">
+            <label class="form-check-label" for="isProductAvailableCheckBox">
+              Available
+            </label>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
