@@ -5,16 +5,42 @@ import { TestComponent, NotFoundComponent, ForbiddenComponent } from './shared/c
 import { ProcessOrderComponent } from './orders/process-order/process-order.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
-  { path: 'cart', component: CartListComponent },
-  { path: 'order', component: ProcessOrderComponent },
-  { path: 'test', component: TestComponent },
-  { path: 'forbidden', component: ForbiddenComponent },
+  {
+    path: '',
+    redirectTo: '/products',
+    pathMatch: 'full',
+    data: { title: 'About' }
+   },
+  {
+    path: 'cart',
+    component: CartListComponent,
+    data: { title: 'Cart' }
+  },
+  {
+    path: 'order',
+    component: ProcessOrderComponent,
+    data: { title: 'Process order' }
+  },
+  {
+    path: 'test',
+    component: TestComponent,
+    data: { title: 'Test' }
+  },
+  {
+    path: 'forbidden',
+    component: ForbiddenComponent,
+    data: { title: 'Forbidden' }
+  },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    data: { title: 'Admin' }
   },
-  { path: '**', component: NotFoundComponent  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+    data: { title: 'Not Found' }
+  },
 ];
 
 @NgModule({
