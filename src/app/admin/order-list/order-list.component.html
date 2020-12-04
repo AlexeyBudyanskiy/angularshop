@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <h1 class="text-center">Orders</h1>
+      <div *ngFor="let order of orders">
+        <app-order-item [order]='order'></app-order-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+

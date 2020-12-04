@@ -1,0 +1,10 @@
+<div class="card" style="margin: 25px;"  [routerLink]="[order.id]">
+  <div class="card-body">
+      <h1 class="card-title">Customer: {{order.customerName}}</h1>
+      <h2 class="card-subtitle mb-2">Address: {{order.address}}</h2>
+      <h3 class="card-subtitle mb-2">Sum: {{getOrderSum() | currency:'USD':'symbol':'2.2-2'}}({{getOrderSum()* 0.84 | currency:'EUR':'symbol':'2.2-2'}})</h3>
+      <h3 class="card-subtitle mb-2">Quantity: {{getOrderQuantity()}}</h3>
+      <div class="card-text">Id: {{order.id}}</div>
+      <div class="card-text">Date: {{order.date | date:'short'}}</div>
+  </div>
+</div>

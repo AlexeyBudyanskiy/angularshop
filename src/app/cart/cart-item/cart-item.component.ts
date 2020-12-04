@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CartItem } from 'src/app/shared/models/cart-item';
-import { Product } from 'src/app/shared/models/product';
+import { CartItem, Product } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-cart-item',
@@ -9,6 +8,8 @@ import { Product } from 'src/app/shared/models/product';
 })
 export class CartItemComponent implements OnInit {
 
+  @Input()
+  displayButtons = true;
   @Input()
   cartItem: CartItem;
 
