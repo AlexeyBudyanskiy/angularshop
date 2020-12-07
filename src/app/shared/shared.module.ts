@@ -6,6 +6,7 @@ import { HiglightDirective } from './higlight.directive';
 import { TestComponent } from './components/test/test.component';
 import { OrderByPipe } from './pipes';
 import { NotFoundComponent, NavbarComponent, ForbiddenComponent } from './components';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NotFoundComponent, NavbarComponent, ForbiddenComponent } from './compon
     ForbiddenComponent,
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
     RouterModule
   ],

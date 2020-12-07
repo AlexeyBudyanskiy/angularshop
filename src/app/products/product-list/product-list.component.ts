@@ -11,7 +11,7 @@ import { ProductService } from '../product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit {
 
 
   constructor(
@@ -20,10 +20,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
 
   @ViewChild('appTitle') applicationTitle: ElementRef<HTMLHeadingElement>;
   public products: Observable<Product[]>;
-
-  ngAfterViewInit(): void {
-    this.applicationTitle.nativeElement.innerText = 'Products page';
-  }
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();

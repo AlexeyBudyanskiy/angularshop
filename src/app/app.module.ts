@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ProductRoutingModule } from './products/products-routing.module';
 import { AdminModule } from './admin/admin.module';
+import { httpInterceptorProviders } from './shared/interceptors';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AdminModule } from './admin/admin.module';
     // Last for correct routing.
     AppRoutingModule,
   ],
-  providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'USD' }],
+  providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'USD' }, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule {

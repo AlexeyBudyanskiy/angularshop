@@ -32,7 +32,6 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   onDeleteProduct(product: Product): void {
-    this.productService.deleteProduct(product);
-    this.products = this.productService.getProducts();
+    this.products = this.productService.deleteProduct(product);
   }
 }

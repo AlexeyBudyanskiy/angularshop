@@ -20,7 +20,7 @@ export class ProductFormComponent implements OnInit {
     price: 0,
     tags: [],
     updatedDate: null
-};
+  };
 
   constructor(
     private productService: ProductService,
@@ -31,7 +31,7 @@ export class ProductFormComponent implements OnInit {
     this.getProduct();
   }
 
-  getProduct(): void{
+  getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.productService
       .getProduct(id)
@@ -45,16 +45,17 @@ export class ProductFormComponent implements OnInit {
   onSaveProduct(): void {
     const product = { ...this.product } as Product;
 
+    const observer = {
+      next: (savedUser: Product) => {
+        this.router.navigate(['/admin/products']);
+      },
+      error: (err: any) => console.log(err)
+    };
+
     if (product.id) {
-      this.productService.updateProduct(product);
+      this.productService.updateProduct(product).subscribe(observer);
     } else {
-      this.productService.createProduct(product);
+      this.productService.createProduct(product).subscribe(observer);
     }
-
-    this.router.navigate(['/admin/products']);
-  }
-
-  trackByIdx(index, val): number {
-    return index;
   }
 }

@@ -1,0 +1,53 @@
+{
+  "products": [{
+    "id": 1,
+    "name": "Dr Nice",
+    "category": "First",
+    "description": "Description1",
+    "isAvailable": true,
+    "price": 150,
+    "tags": ["tag1", "tag2"],
+    "updatedDate": "1970-01-01T00:00:00.000Z",
+    "imageUrl": "https://i.picsum.photos/id/237/536/354.jpg?hmac=i0yVXW1ORpyCZpQ-CknuyV-jbtU7_x9EBQVhvT5aRr0"
+  }, {
+    "id": 2,
+    "name": "Dr Pepper",
+    "category": "Second",
+    "description": "Description2",
+    "isAvailable": true,
+    "price": 200,
+    "tags": ["tag2", "tag3"],
+    "updatedDate": "2020-01-10T10:22:00.000Z",
+    "imageUrl": "https://ichef.bbci.co.uk/news/1024/cpsprodpb/83D7/production/_111515733_gettyimages-1208779325.jpg"
+  }, {
+    "id": 3,
+    "name": "Dr Strange",
+    "category": "Third",
+    "description": "Description3",
+    "isAvailable": false,
+    "price": 300,
+    "tags": ["tag5", "tag3"],
+    "updatedDate": "2020-02-22T10:22:00.000Z",
+    "imageUrl": "https://www.sciencenewsforstudents.org/wp-content/uploads/2020/05/1030_LL_domestic_cats-1028x579.jpg"
+  }, {
+    "id": 4,
+    "name": "Dr Empty",
+    "category": "Fourth",
+    "description": "Description4",
+    "isAvailable": true,
+    "price": 250,
+    "tags": ["tag5", "tag2"],
+    "updatedDate": "2020-08-14T10:22:00.000Z",
+    "imageUrl": "https://www.paws.org/wp-content/uploads/2019/10/Alphie_cat_29864612_101115_profile_MB-2-1024x583.jpg"
+  }, {
+    "id": 5,
+    "name": "Dr Dre",
+    "category": "Second",
+    "description": "Description5",
+    "isAvailable": false,
+    "price": 250,
+    "tags": ["tag1", "tag4"],
+    "updatedDate": "2020-04-17T10:22:00.000Z",
+    "imageUrl": "https://post.greatist.com/wp-content/uploads/sites/3/2020/02/322868_1100-1100x628.jpg"
+  }]
+}
